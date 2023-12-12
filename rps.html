@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>Rock Paper Scissors</h1>
+
+    <p>Click the button to play a game.</p>
+
+    <button onclick="playGame()">Play</button>
+
+    <p id="rps"></p>
+
+    <script>
+        function playGame() {
+            let result;
+            let playerChoice = prompt("Rock paper or scissors");
+            let computer;
+
+            if (playerChoice) {
+                let playerOne = playerChoice.trim().toLowerCase();
+                if (playerOne === "rock" || playerOne === "paper" || playerOne === "scissors") {
+                    const rand = Math.floor(Math.random() * 3) + 1;
+                    if (rand === 1) {
+                        computer = "rock";
+                    }
+                    else if (rand === 2) {
+                        computer = "paper";
+                    }
+                    else {
+                        computer = "scissors";
+                    }
+                } else {
+                    alert("Wrong input");
+                }
+
+                switch (playerOne) {
+                    case computer:
+                        result = "Tie";
+                        break;
+                    case "rock":
+                        if (computer === "paper") {
+                            result = "You lost";
+                        } else {
+                            result = "You won";
+                        }
+                        break;
+                    case "paper":
+                        if (computer === "scissors") {
+                            result = "You lost";
+                        } else {
+                            result = "You won";
+                        }
+                        break;
+                    default:
+                        if (computer === "rock") {
+                            result = "You lost";
+                        } else {
+                            result = "You won";
+                        }
+
+                }
+                document.getElementById("rps").innerHTML = result;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
